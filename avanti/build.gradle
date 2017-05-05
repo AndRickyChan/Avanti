@@ -55,7 +55,7 @@ dependencies {
 }
 
 publish {
-    userOrg = 'hyman'//bintray.com用户名
+    userOrg = 'rickychan'//bintray.com用户名
     repoName = 'android'//Repository名(bintray网站新建的Repository名，类型为maven)
     groupId = 'com.ricky'//jcenter上的路径
     artifactId = 'avanti'//项目名称
