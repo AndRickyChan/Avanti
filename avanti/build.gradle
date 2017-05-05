@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 25
@@ -20,7 +21,7 @@ android {
         }
     }
 
-    lintOptions{
+    lintOptions {
         abortOnError false
     }
 }
@@ -51,4 +52,14 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.0'
     // Material Dialogs
     compile 'com.afollestad.material-dialogs:core:0.9.3.0'
+}
+
+publish {
+    userOrg = 'hyman'//bintray.com用户名
+    repoName = 'android'//Repository名(bintray网站新建的Repository名，类型为maven)
+    groupId = 'com.ricky'//jcenter上的路径
+    artifactId = 'avanti'//项目名称
+    publishVersion = '1.0.0'//版本号
+    desc = '自定义 Android 快速开发框架'//描述，不重要
+    website = 'https://github.com/AndRickyChan/Avanti'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
 }
