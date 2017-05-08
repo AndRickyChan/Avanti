@@ -10,7 +10,7 @@ import rx.subscriptions.CompositeSubscription;
 
 public abstract class RxPresenter<T extends BaseView> implements BasePresenter {
 
-    private T mView;
+    protected T mView;
     protected CompositeSubscription mCompositeSubscription;
 
     public RxPresenter(T mView) {

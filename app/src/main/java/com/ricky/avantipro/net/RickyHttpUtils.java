@@ -9,6 +9,7 @@ import com.ricky.avanti.http.okhttp.OkHttpManager;
 import com.ricky.avantipro.bean.DemoBean;
 import com.ricky.avantipro.bean.LoginBean;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,21 +24,21 @@ public class RickyHttpUtils {
     private static RickyHttpUtils mInstance;
     private RickyApi mApi;
 
-    public RickyHttpUtils(Context mContext) {
+    public RickyHttpUtils() {
         mApi = RetrofitHelper.getInstance().getApiService(RickyApi.class
                 , new OkHttpManager.Builder()
-                        .cacheFile(mContext.getCacheDir())
+                        .cacheFile(new File("cacheFile"))
                         .cacheSize(1024 * 1024 * 100)
                         .cookiePrefs("cookie_prefs")
                         .timeOut(15)
                         .build());
     }
 
-    public static RickyHttpUtils getInstance(Context mContext) {
+    public static RickyHttpUtils getInstance() {
         if (mInstance == null) {
             synchronized (RickyHttpUtils.class) {
                 if (mInstance == null) {
-                    mInstance = new RickyHttpUtils(mContext);
+                    mInstance = new RickyHttpUtils();
                 }
             }
         }

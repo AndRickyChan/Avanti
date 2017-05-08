@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,16 +22,10 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btn_simple_demo"
+            android:id="@+id/btn_mvp_test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="非MVP" />
-
-        <Button
-            android:id="@+id/btn_mvp_demo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MVP" />
+            android:text="网络测试" />
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

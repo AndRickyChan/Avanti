@@ -1,16 +1,11 @@
 package com.ricky.avantipro;
 
-import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.Toolbar;
-import android.widget.Button;
-import android.widget.Toast;
 
-import com.ricky.avanti.base.BaseBean;
 import com.ricky.avanti.base.SimpleActivity;
-import com.ricky.avanti.http.utils.RxSubscribe;
-import com.ricky.avanti.http.utils.RxUtils;
-import com.ricky.avantipro.bean.LoginBean;
-import com.ricky.avantipro.net.RickyHttpUtils;
+import com.ricky.avantipro.ui.SimpleDemoActivity;
+import com.ricky.avantipro.ui.mvp.MvpDemoActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -19,12 +14,8 @@ import butterknife.OnClick;
 public class MainActivity extends SimpleActivity {
 
 
-    private Context mContext;
-
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @BindView(R.id.btn_net_test)
-    Button testBtn;
 
     @Override
     public int getLayout() {
@@ -38,28 +29,15 @@ public class MainActivity extends SimpleActivity {
         initToolbar(mToolbar);
     }
 
-    @OnClick(R.id.btn_net_test)
-    public void testButtonClick() {
-        RickyHttpUtils.getInstance(mContext)
-                .login("Ricky", "123456")
-                .compose(RxUtils.<BaseBean<LoginBean>>rxSchedulerHelper())
-                .compose(RxUtils.<LoginBean>handleResult())
-                .subscribe(new RxSubscribe<LoginBean>(mContext) {
-                    @Override
-                    public boolean showProgress() {
-                        return super.showProgress();
-                    }
+    @OnClick(R.id.btn_simple_demo)
+    public void simpleDemoClick() {
+        Intent mIntent = new Intent(this, SimpleDemoActivity.class);
+        startActivity(mIntent);
+    }
 
-                    @Override
-                    public void _onNext(LoginBean loginBean) {
-                        Toast.makeText(mContext, "登录成功", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void _onError(int errorType, String message) {
-                        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
-                    }
-                });
-
+    @OnClick(R.id.btn_mvp_demo)
+    public void mvpDemoClick() {
+        Intent mIntent = new Intent(this, MvpDemoActivity.class);
+        startActivity(mIntent);
     }
 }
