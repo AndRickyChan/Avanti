@@ -16,6 +16,16 @@ Avanti是一个集成Retrofit+OkHttp+RxJava技术的实现框架，自定义网�
 
 ## 使用（网络框架的使用方式）
 
+#### 添加依赖
+
+在项目中app Module的build.gradle中添加项目依赖
+
+```javascript
+dependencies{
+    compile 'compile 'com.ricky:avanti:1.0.0''
+}
+```
+
 #### 配置权限
 
 ```javascript
