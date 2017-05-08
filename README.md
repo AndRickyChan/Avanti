@@ -6,25 +6,28 @@ Avanti是一个集成Retrofit+OkHttp+RxJava技术的实现框架，自定义网�
 
 
 ## 版本
-##### v1.0.0 网络框架的实现，增加CircleImageView、RoundProgressBar、DeleteEditText和其他的基础工具类
+##### v1.1.0 增加MVP模式,实现BaseActivity和BaseFragment,统一管理APP中的Activity，实现网络框架高度定制
 
 ## 注意事项
 
 * 1.最低兼容API 15 。
 * 2.本项目已经依赖Retrofit、RxJava和Butterknife,不需要再次进行依赖。
-* 3.如果有好的建议，可以提issue,谢谢帮忙改进~~~
+* 3.Butterknife需要在自己的Module中进行相应配置，文档中已给出。
+* 4.具体开发逻辑详见项目中的Demo
+* 5.如果有好的建议，可以提issue,谢谢帮忙改进~~~
 
-## 使用（网络框架的使用方式）
+## 使用
 
 #### 添加依赖
 
-在项目中app Module的build.gradle中添加项目依赖
+在自己项目的app Module的build.gradle中添加项目依赖
 
 ```javascript
 dependencies{
     compile 'com.ricky:avanti:1.0.0'
 }
 ```
+同时需要在项目中配置Butterknife的支持，配置 [Butterknife](https://github.com/JakeWharton/butterknife)
 
 #### 配置权限
 
@@ -33,7 +36,7 @@ dependencies{
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 ```
 
-#### 使用方式
+#### 使用方式(网络框架)
 
 ##### 1.新建CustomApp继承Application,在onCreate方法中初始化
 
@@ -104,6 +107,33 @@ dependencies{
              }
          });
 ```
+
+#### 使用方式(BaseActivity和BaseFragment统一管理页面)
+
+##### 1.如果Activity或者Fragment为MVP模式，则直接继承BaseActivity或者BaseFragment,并实现其方法
+
+```javascript
+    //用于获取Presenter
+    public abstract T getPresenter();
+    //用于设置layout
+    public abstract int getLayout();
+    //用于初始化数据和实现界面逻辑
+    public abstract void initEventAndData();
+```
+
+###### 1.1实现Presenter的时候，需要继承RxPresenter
+###### 1.2实现Activity或者Fragment时，需要实现继承BaseView的接口
+
+##### 2.如果Activity或者Fragment不是MVP模式，则直接继承SimpleActivity或者SimpleFragment,并实现其方法
+
+```javascript
+    //用于设置layout
+    public abstract int getLayout();
+    //用于初始化数据和实现界面逻辑
+    public abstract void initEventAndData();
+```
+
+
 #### 其他工具类
 * 1.AppManager--activity管理类
 * 2.DensityUtils--单位转换工具和屏幕宽高获取工具
