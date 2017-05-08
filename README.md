@@ -22,7 +22,7 @@ Avanti是一个集成Retrofit+OkHttp+RxJava技术的实现框架，自定义网�
 
 ```javascript
 dependencies{
-    compile 'compile 'com.ricky:avanti:1.0.0''
+    compile 'com.ricky:avanti:1.0.0'
 }
 ```
 
