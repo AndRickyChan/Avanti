@@ -20,8 +20,8 @@ import butterknife.ButterKnife;
 
 public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity {
 
-    private Context mContext;
-    private T mPresenter;
+    protected Context mContext;
+    protected T mPresenter;
 
 
     @Override

@@ -1,5 +1,6 @@
 package com.ricky.avanti.base;
 
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,10 +20,13 @@ import butterknife.ButterKnife;
 
 public abstract class SimpleActivity extends AppCompatActivity {
 
+    protected Context mContext;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
+        mContext = this;
         ButterKnife.bind(this);
         initEventAndData();
         AppManager.getInstance().addActivity(this);
