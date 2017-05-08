@@ -11,7 +11,7 @@ Avanti是一个集成Retrofit+OkHttp+RxJava技术的实现框架，自定义网�
 ## 注意事项
 
 * 1.最低兼容API 15 。
-* 2.本项目已经依赖Retrofit、RxJava和Butterknife,不需要再次进行依赖。
+* 2.本项目已经依赖Retrofit、RxJava.
 * 3.Butterknife需要在自己的Module中进行相应配置，文档中已给出。
 * 4.具体开发逻辑详见项目中的Demo
 * 5.如果有好的建议，可以提issue,谢谢帮忙改进~~~
@@ -24,7 +24,7 @@ Avanti是一个集成Retrofit+OkHttp+RxJava技术的实现框架，自定义网�
 
 ```javascript
 dependencies{
-    compile 'com.ricky:avanti:1.0.0'
+    compile 'com.ricky:avanti:1.1.0'
 }
 ```
 同时需要在项目中配置Butterknife的支持，配置 [Butterknife](https://github.com/JakeWharton/butterknife)
