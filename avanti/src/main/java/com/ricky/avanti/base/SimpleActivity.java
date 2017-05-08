@@ -1,6 +1,5 @@
 package com.ricky.avanti.base;
 
-import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,23 +13,17 @@ import com.ricky.avanti.util.AppManager;
 import butterknife.ButterKnife;
 
 /**
- * MVP模式下的Activity基类，其他activity需要继承这个类
- * Created by Ricky on 2017-5-5.
+ * 非MVP模式下的activity基类，适用于非MVP状态下创建的activity继承
+ * Created by Ricky on 2017-5-8.
  */
 
-public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity {
-
-    private Context mContext;
-    private T mPresenter;
-
+public abstract class SimpleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
-        mContext = this;
         ButterKnife.bind(this);
-        mPresenter = getPresenter();
         initEventAndData();
         AppManager.getInstance().addActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -40,8 +33,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected void onDestroy() {
         super.onDestroy();
         AppManager.getInstance().finishActivity(this);
-        if (mPresenter != null)
-            mPresenter.detachView();
     }
 
     protected void initToolbar(Toolbar mToolbar) {
@@ -50,8 +41,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
 
@@ -64,8 +55,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         }
         return super.onOptionsItemSelected(item);
     }
-
-    public abstract T getPresenter();
 
     public abstract int getLayout();
 
