@@ -54,7 +54,7 @@ publish {
     repoName = 'android'//Repository名(bintray网站新建的Repository名，类型为maven)
     groupId = 'com.ricky'//jcenter上的路径
     artifactId = 'avanti'//项目名称
-    publishVersion = '1.1.0'//版本号
+    publishVersion = '1.1.1'//版本号
     desc = 'Custom Android fast develop framework'//描述，不重要
     website = 'https://github.com/AndRickyChan/Avanti'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
 }
