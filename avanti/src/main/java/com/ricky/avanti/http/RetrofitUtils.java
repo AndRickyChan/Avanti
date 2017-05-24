@@ -36,23 +36,11 @@ public class RetrofitUtils {
         return mApplicationContext;
     }
 
-    public void setmApplicationContext(Context mApplicationContext) {
-        this.mApplicationContext = mApplicationContext;
-    }
-
     public String getBASE_API_URL() {
         return BASE_API_URL;
     }
 
-    public void setBASE_API_URL(String BASE_API_URL) {
-        this.BASE_API_URL = BASE_API_URL;
-    }
-
     public boolean IS_DEBUG() {
         return IS_DEBUG;
-    }
-
-    public void setIS_DEBUG(boolean IS_DEBUG) {
-        this.IS_DEBUG = IS_DEBUG;
     }
 }
